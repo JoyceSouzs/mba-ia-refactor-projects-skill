@@ -6,6 +6,15 @@ import sys
 import math
 import hashlib
 
+
+def is_overdue(task):
+    """Centraliza o cálculo de atraso de uma task."""
+    if task.due_date:
+        if task.due_date < datetime.utcnow():
+            if task.status not in ('done', 'cancelled'):
+                return True
+    return False
+
 def format_date(date_obj):
     if date_obj:
         return str(date_obj)
